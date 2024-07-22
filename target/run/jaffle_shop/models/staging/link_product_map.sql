@@ -5,7 +5,7 @@
     from (
         Select
         md5(card_links) as link_product_map_uuid,
-        split_part(split_part(card_links, '/', -1), '-', 1) as pid, --the last element of the card_links is the pid
+        split_part(split_part(card_links, '/', -1), '-', 1) as parent_product_id, --the last element of the card_links is the pid
         split_part(card_links, '/', -2) as color, --the penultimate element of the card_links is the color
         case when split_part(split_part(page_links, '/', -1), '?', 2) = '' then 1
             else cast(

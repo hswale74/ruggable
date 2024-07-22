@@ -9013,3 +9013,1797 @@ drop view if exists "postgres"."public_staging"."parent_variant_map__dbt_backup"
 [0m01:00:11.237986 [info ] [MainThread]: 
 [0m01:00:11.238821 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
 [0m01:00:11.240030 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087be0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087bb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf2341a20>]}
+
+
+============================== 2024-07-22 01:18:39.131774 | 1048836e-d360-4655-a8f0-840d53f5c3ed ==============================
+[0m01:18:39.132984 [info ] [MainThread]: Running with dbt=1.2.0
+[0m01:18:39.137641 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/usr/src/dbt/profiles', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m01:18:39.138652 [debug] [MainThread]: Tracking: tracking
+[0m01:18:39.165069 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f236a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f23ee0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f234c0>]}
+[0m01:18:39.374964 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m01:18:39.377302 [debug] [MainThread]: Partial parsing: updated file: jaffle_shop://models/staging/parent_product.sql
+[0m01:18:39.461608 [debug] [MainThread]: 1699: static parser successfully parsed staging/parent_product.sql
+[0m01:18:39.678773 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1048836e-d360-4655-a8f0-840d53f5c3ed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10ab100>]}
+[0m01:18:39.722708 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1048836e-d360-4655-a8f0-840d53f5c3ed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087eb0>]}
+[0m01:18:39.723928 [info ] [MainThread]: Found 5 models, 5 tests, 0 snapshots, 0 analyses, 256 macros, 0 operations, 6 seed files, 0 sources, 0 exposures, 0 metrics
+[0m01:18:39.724968 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1048836e-d360-4655-a8f0-840d53f5c3ed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1075390>]}
+[0m01:18:39.736429 [info ] [MainThread]: 
+[0m01:18:39.738612 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:18:39.743692 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres"
+[0m01:18:39.797042 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m01:18:39.797907 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m01:18:39.798416 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:18:39.868239 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.07 seconds
+[0m01:18:39.876787 [debug] [ThreadPool]: On list_postgres: Close
+[0m01:18:39.884968 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public"
+[0m01:18:39.886442 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public_staging"
+[0m01:18:39.927435 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:18:39.941581 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:18:39.942203 [debug] [ThreadPool]: On list_postgres_public: BEGIN
+[0m01:18:39.942980 [debug] [ThreadPool]: On list_postgres_public_staging: BEGIN
+[0m01:18:39.943602 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:18:39.944261 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:18:39.986631 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:18:39.987459 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:18:39.988321 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:18:39.988958 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:18:39.989530 [debug] [ThreadPool]: On list_postgres_public_staging: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public_staging"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_staging'
+  
+[0m01:18:39.990156 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m01:18:39.994049 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.0 seconds
+[0m01:18:39.994605 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:18:40.000841 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m01:18:40.007871 [debug] [ThreadPool]: On list_postgres_public_staging: ROLLBACK
+[0m01:18:40.009351 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m01:18:40.010052 [debug] [ThreadPool]: On list_postgres_public_staging: Close
+[0m01:18:40.035373 [debug] [MainThread]: Using postgres connection "master"
+[0m01:18:40.036262 [debug] [MainThread]: On master: BEGIN
+[0m01:18:40.036826 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:18:40.074201 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:18:40.075330 [debug] [MainThread]: Using postgres connection "master"
+[0m01:18:40.075872 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m01:18:40.079999 [debug] [MainThread]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:18:40.085767 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1048836e-d360-4655-a8f0-840d53f5c3ed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f699f0>]}
+[0m01:18:40.086817 [debug] [MainThread]: On master: ROLLBACK
+[0m01:18:40.087520 [debug] [MainThread]: Using postgres connection "master"
+[0m01:18:40.088028 [debug] [MainThread]: On master: BEGIN
+[0m01:18:40.088924 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m01:18:40.089870 [debug] [MainThread]: On master: COMMIT
+[0m01:18:40.090970 [debug] [MainThread]: Using postgres connection "master"
+[0m01:18:40.091698 [debug] [MainThread]: On master: COMMIT
+[0m01:18:40.092562 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:18:40.093183 [debug] [MainThread]: On master: Close
+[0m01:18:40.094582 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m01:18:40.095460 [info ] [MainThread]: 
+[0m01:18:40.106664 [debug] [Thread-1 (]: Began running node model.jaffle_shop.link_product_map
+[0m01:18:40.107279 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_product
+[0m01:18:40.108388 [info ] [Thread-1 (]: 1 of 3 START view model public_staging.link_product_map ........................ [RUN]
+[0m01:18:40.109469 [info ] [Thread-2 (]: 2 of 3 START view model public_staging.parent_product .......................... [RUN]
+[0m01:18:40.111162 [debug] [Thread-1 (]: Acquiring new postgres connection "model.jaffle_shop.link_product_map"
+[0m01:18:40.112889 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_product"
+[0m01:18:40.113593 [debug] [Thread-1 (]: Began compiling node model.jaffle_shop.link_product_map
+[0m01:18:40.114296 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_product
+[0m01:18:40.114922 [debug] [Thread-1 (]: Compiling model.jaffle_shop.link_product_map
+[0m01:18:40.115538 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_product
+[0m01:18:40.123453 [debug] [Thread-1 (]: Writing injected SQL for node "model.jaffle_shop.link_product_map"
+[0m01:18:40.133277 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_product"
+[0m01:18:40.135735 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:18:40.136317 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:18:40.136743 [debug] [Thread-1 (]: Began executing node model.jaffle_shop.link_product_map
+[0m01:18:40.137340 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_product
+[0m01:18:40.541885 [debug] [Thread-1 (]: Writing runtime SQL for node "model.jaffle_shop.link_product_map"
+[0m01:18:40.542455 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_product"
+[0m01:18:40.545899 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:18:40.546394 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:18:40.547477 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: BEGIN
+[0m01:18:40.547974 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:18:40.546931 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: BEGIN
+[0m01:18:40.549707 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:18:40.589101 [debug] [Thread-1 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:18:40.589878 [debug] [Thread-2 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:18:40.591160 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:18:40.591654 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+
+  create view "postgres"."public_staging"."parent_product__dbt_tmp" as (
+    --making a simple dimension table for parent product
+
+Select distinct
+pid as parent_product_id,
+thickness,
+material,
+weave_feature,
+brand
+category
+from rugs_usa_parent
+  );
+[0m01:18:40.590601 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:18:40.592427 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+
+  create view "postgres"."public_staging"."link_product_map__dbt_tmp" as (
+    with base as (
+    Select *, row_number() over (partition by card_links order by page_rank) as row_num
+    from (
+        Select
+        md5(card_links) as link_product_map_uuid,
+        split_part(split_part(card_links, '/', -1), '-', 1) as pid, --the last element of the card_links is the pid
+        split_part(card_links, '/', -2) as color, --the penultimate element of the card_links is the color
+        case when split_part(split_part(page_links, '/', -1), '?', 2) = '' then 1
+            else cast(
+                    split_part(
+                        split_part(split_part(page_links, '/', -1), '?', 2),
+                        '=',
+                        2
+                    ) as int) end as page_rank,    --the second element of the query string is the page rank
+        request_time_stamp::timestamptz as request_timestamp_utc, --assuming timestamp is in utc at the source
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        card_links, 
+        page_links
+        from rugs_usa_links) links
+)
+
+Select *
+from base
+where row_num = 1
+  );
+[0m01:18:40.595562 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:18:40.603401 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.01 seconds
+[0m01:18:40.637522 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:18:40.650369 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product" rename to "parent_product__dbt_backup"
+[0m01:18:40.649983 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:18:40.651338 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map" rename to "link_product_map__dbt_backup"
+[0m01:18:40.651809 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:18:40.662599 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:18:40.663360 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:18:40.674542 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product__dbt_tmp" rename to "parent_product"
+[0m01:18:40.673965 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:18:40.675411 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map__dbt_tmp" rename to "link_product_map"
+[0m01:18:40.675825 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:18:40.686564 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:18:40.872396 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:18:40.867764 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:18:40.874024 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:18:40.874518 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:18:40.873416 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:18:40.875518 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:18:40.879364 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:18:40.879861 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:18:40.919230 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:18:40.924640 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+drop view if exists "postgres"."public_staging"."parent_product__dbt_backup" cascade
+[0m01:18:40.923949 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:18:40.925576 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+drop view if exists "postgres"."public_staging"."link_product_map__dbt_backup" cascade
+[0m01:18:40.927887 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:18:40.928280 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:18:40.933334 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:18:40.938133 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: Close
+[0m01:18:40.937506 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:18:40.940856 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: Close
+[0m01:18:40.940203 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1048836e-d360-4655-a8f0-840d53f5c3ed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aab1cd2c160>]}
+[0m01:18:40.942270 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1048836e-d360-4655-a8f0-840d53f5c3ed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf237fb80>]}
+[0m01:18:40.945211 [info ] [Thread-1 (]: 1 of 3 OK created view model public_staging.link_product_map ................... [[32mCREATE VIEW[0m in 0.83s]
+[0m01:18:40.943761 [info ] [Thread-2 (]: 2 of 3 OK created view model public_staging.parent_product ..................... [[32mCREATE VIEW[0m in 0.83s]
+[0m01:18:40.946699 [debug] [Thread-1 (]: Finished running node model.jaffle_shop.link_product_map
+[0m01:18:40.948957 [debug] [Thread-1 (]: Began running node model.jaffle_shop.parent_variant_map
+[0m01:18:40.950069 [info ] [Thread-1 (]: 3 of 3 START view model public_staging.parent_variant_map ...................... [RUN]
+[0m01:18:40.948170 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_product
+[0m01:18:40.951676 [debug] [Thread-1 (]: Acquiring new postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:18:40.952720 [debug] [Thread-1 (]: Began compiling node model.jaffle_shop.parent_variant_map
+[0m01:18:40.953282 [debug] [Thread-1 (]: Compiling model.jaffle_shop.parent_variant_map
+[0m01:18:40.961022 [debug] [Thread-1 (]: Writing injected SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:18:40.962464 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:18:40.963060 [debug] [Thread-1 (]: Began executing node model.jaffle_shop.parent_variant_map
+[0m01:18:40.980431 [debug] [Thread-1 (]: Writing runtime SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:18:40.982135 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:18:40.982707 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: BEGIN
+[0m01:18:40.983207 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:18:41.020024 [debug] [Thread-1 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:18:41.020902 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:18:41.021484 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+
+  create view "postgres"."public_staging"."parent_variant_map__dbt_tmp" as (
+    with base as (
+    Select
+        md5(pid || variant) as parent_variant_map_uuid,
+        pid as parent_product_id,
+        variant as variant_id,
+        actual_size,
+        weave_feature,
+        weave_cat,
+        size_grp,
+        shipping_size,
+        shape,
+        cast(weight as float) as weight,
+        cast(price as decimal(10,2)) as price,
+        cast(msrp as decimal(10,2)) as msrp,    
+        case when status = 'In_stock' and not low_stock then False else True end as popular_variant_flag,
+        low_stock as low_stock_flag,
+        cast(estimated_delivery_date as date) as estimated_delivery_date,
+        case when new_arrival = 'Y' then true else false end as new_arrival_flag,   
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        row_number() over (partition by pid, variant order by dw_insert_timestamp desc) as row_num
+    from rugs_usa_variant
+)
+
+
+Select *
+from base 
+where row_num = 1
+  );
+[0m01:18:41.025161 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:18:41.036644 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:18:41.037259 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map" rename to "parent_variant_map__dbt_backup"
+[0m01:18:41.038248 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:18:41.048545 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:18:41.049143 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map__dbt_tmp" rename to "parent_variant_map"
+[0m01:18:41.050112 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:18:41.057012 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:18:41.057621 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:18:41.058158 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:18:41.059830 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:18:41.067706 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:18:41.068264 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+drop view if exists "postgres"."public_staging"."parent_variant_map__dbt_backup" cascade
+[0m01:18:41.069860 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:18:41.074115 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:18:41.074739 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: Close
+[0m01:18:41.076162 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1048836e-d360-4655-a8f0-840d53f5c3ed', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf233c730>]}
+[0m01:18:41.077379 [info ] [Thread-1 (]: 3 of 3 OK created view model public_staging.parent_variant_map ................. [[32mCREATE VIEW[0m in 0.12s]
+[0m01:18:41.078846 [debug] [Thread-1 (]: Finished running node model.jaffle_shop.parent_variant_map
+[0m01:18:41.084088 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:18:41.084880 [debug] [MainThread]: Using postgres connection "master"
+[0m01:18:41.085390 [debug] [MainThread]: On master: BEGIN
+[0m01:18:41.085884 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m01:18:41.122280 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:18:41.123137 [debug] [MainThread]: On master: COMMIT
+[0m01:18:41.123677 [debug] [MainThread]: Using postgres connection "master"
+[0m01:18:41.124205 [debug] [MainThread]: On master: COMMIT
+[0m01:18:41.124861 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:18:41.125438 [debug] [MainThread]: On master: Close
+[0m01:18:41.127301 [info ] [MainThread]: 
+[0m01:18:41.128225 [info ] [MainThread]: Finished running 3 view models in 0 hours 0 minutes and 1.39 seconds (1.39s).
+[0m01:18:41.129254 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:18:41.129884 [debug] [MainThread]: Connection 'model.jaffle_shop.parent_product' was properly closed.
+[0m01:18:41.130383 [debug] [MainThread]: Connection 'model.jaffle_shop.parent_variant_map' was properly closed.
+[0m01:18:41.165640 [info ] [MainThread]: 
+[0m01:18:41.166570 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:18:41.167724 [info ] [MainThread]: 
+[0m01:18:41.168589 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[0m01:18:41.169882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf233d7b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf233dae0>]}
+
+
+============================== 2024-07-22 01:20:18.483461 | c288ca1d-cb88-4ea4-bafe-d0af55370c83 ==============================
+[0m01:20:18.484007 [info ] [MainThread]: Running with dbt=1.2.0
+[0m01:20:18.487955 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/usr/src/dbt/profiles', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m01:20:18.489084 [debug] [MainThread]: Tracking: tracking
+[0m01:20:18.520983 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f33460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f33ac0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f32800>]}
+[0m01:20:18.737275 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m01:20:18.739497 [debug] [MainThread]: Partial parsing: updated file: jaffle_shop://models/staging/link_product_map.sql
+[0m01:20:18.822516 [debug] [MainThread]: 1699: static parser successfully parsed staging/link_product_map.sql
+[0m01:20:19.038189 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'c288ca1d-cb88-4ea4-bafe-d0af55370c83', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10ab070>]}
+[0m01:20:19.083967 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'c288ca1d-cb88-4ea4-bafe-d0af55370c83', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087fd0>]}
+[0m01:20:19.085718 [info ] [MainThread]: Found 5 models, 5 tests, 0 snapshots, 0 analyses, 256 macros, 0 operations, 6 seed files, 0 sources, 0 exposures, 0 metrics
+[0m01:20:19.088532 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c288ca1d-cb88-4ea4-bafe-d0af55370c83', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087fa0>]}
+[0m01:20:19.096188 [info ] [MainThread]: 
+[0m01:20:19.098339 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:20:19.104097 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres"
+[0m01:20:19.167038 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m01:20:19.168301 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m01:20:19.168823 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:20:19.238834 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.07 seconds
+[0m01:20:19.245866 [debug] [ThreadPool]: On list_postgres: Close
+[0m01:20:19.257642 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public"
+[0m01:20:19.259366 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public_staging"
+[0m01:20:19.307978 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:20:19.316998 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:20:19.317433 [debug] [ThreadPool]: On list_postgres_public: BEGIN
+[0m01:20:19.318125 [debug] [ThreadPool]: On list_postgres_public_staging: BEGIN
+[0m01:20:19.318732 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:20:19.319345 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:20:19.358974 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:20:19.359622 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:20:19.360365 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:20:19.360975 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:20:19.361576 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m01:20:19.362209 [debug] [ThreadPool]: On list_postgres_public_staging: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public_staging"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_staging'
+  
+[0m01:20:19.366007 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.0 seconds
+[0m01:20:19.366770 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:20:19.372894 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m01:20:19.377991 [debug] [ThreadPool]: On list_postgres_public_staging: ROLLBACK
+[0m01:20:19.378975 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m01:20:19.379466 [debug] [ThreadPool]: On list_postgres_public_staging: Close
+[0m01:20:19.404592 [debug] [MainThread]: Using postgres connection "master"
+[0m01:20:19.405668 [debug] [MainThread]: On master: BEGIN
+[0m01:20:19.406176 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:20:19.444035 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:20:19.444984 [debug] [MainThread]: Using postgres connection "master"
+[0m01:20:19.445493 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m01:20:19.451118 [debug] [MainThread]: SQL status: SELECT 3 in 0.01 seconds
+[0m01:20:19.456965 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'c288ca1d-cb88-4ea4-bafe-d0af55370c83', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f33460>]}
+[0m01:20:19.458133 [debug] [MainThread]: On master: ROLLBACK
+[0m01:20:19.458854 [debug] [MainThread]: Using postgres connection "master"
+[0m01:20:19.459423 [debug] [MainThread]: On master: BEGIN
+[0m01:20:19.460334 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m01:20:19.460895 [debug] [MainThread]: On master: COMMIT
+[0m01:20:19.461393 [debug] [MainThread]: Using postgres connection "master"
+[0m01:20:19.461879 [debug] [MainThread]: On master: COMMIT
+[0m01:20:19.462566 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:20:19.463162 [debug] [MainThread]: On master: Close
+[0m01:20:19.464469 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m01:20:19.465420 [info ] [MainThread]: 
+[0m01:20:19.478898 [debug] [Thread-1 (]: Began running node model.jaffle_shop.link_product_map
+[0m01:20:19.479545 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_product
+[0m01:20:19.480616 [info ] [Thread-1 (]: 1 of 3 START view model public_staging.link_product_map ........................ [RUN]
+[0m01:20:19.481610 [info ] [Thread-2 (]: 2 of 3 START view model public_staging.parent_product .......................... [RUN]
+[0m01:20:19.483314 [debug] [Thread-1 (]: Acquiring new postgres connection "model.jaffle_shop.link_product_map"
+[0m01:20:19.486055 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_product"
+[0m01:20:19.487026 [debug] [Thread-1 (]: Began compiling node model.jaffle_shop.link_product_map
+[0m01:20:19.487679 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_product
+[0m01:20:19.488351 [debug] [Thread-1 (]: Compiling model.jaffle_shop.link_product_map
+[0m01:20:19.488911 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_product
+[0m01:20:19.496953 [debug] [Thread-1 (]: Writing injected SQL for node "model.jaffle_shop.link_product_map"
+[0m01:20:19.508229 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_product"
+[0m01:20:19.511762 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:20:19.512504 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:20:19.512978 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_product
+[0m01:20:19.513586 [debug] [Thread-1 (]: Began executing node model.jaffle_shop.link_product_map
+[0m01:20:19.914062 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_product"
+[0m01:20:19.914667 [debug] [Thread-1 (]: Writing runtime SQL for node "model.jaffle_shop.link_product_map"
+[0m01:20:19.917054 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:20:19.917572 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:20:19.918566 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: BEGIN
+[0m01:20:19.919104 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:20:19.918060 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: BEGIN
+[0m01:20:19.922405 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:20:19.959298 [debug] [Thread-1 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:20:19.960422 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:20:19.961052 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+
+  create view "postgres"."public_staging"."link_product_map__dbt_tmp" as (
+    with base as (
+    Select *, row_number() over (partition by card_links order by page_rank) as row_num
+    from (
+        Select
+        md5(card_links) as link_product_map_uuid,
+        split_part(split_part(card_links, '/', -1), '-', 1) as parent_product_id, --the last element of the card_links is the pid
+        split_part(card_links, '/', -2) as color, --the penultimate element of the card_links is the color
+        case when split_part(split_part(page_links, '/', -1), '?', 2) = '' then 1
+            else cast(
+                    split_part(
+                        split_part(split_part(page_links, '/', -1), '?', 2),
+                        '=',
+                        2
+                    ) as int) end as page_rank,    --the second element of the query string is the page rank
+        request_time_stamp::timestamptz as request_timestamp_utc, --assuming timestamp is in utc at the source
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        card_links, 
+        page_links
+        from rugs_usa_links) links
+)
+
+Select *
+from base
+where row_num = 1
+  );
+[0m01:20:19.961903 [debug] [Thread-2 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:20:19.962628 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:20:19.963211 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+
+  create view "postgres"."public_staging"."parent_product__dbt_tmp" as (
+    --making a simple dimension table for parent product
+
+Select distinct
+pid as parent_product_id,
+thickness,
+material,
+weave_feature,
+brand
+category
+from rugs_usa_parent
+  );
+[0m01:20:19.965589 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:20:19.966011 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:20:19.997383 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:20:20.008903 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product" rename to "parent_product__dbt_backup"
+[0m01:20:20.008269 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:20:20.009757 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map" rename to "link_product_map__dbt_backup"
+[0m01:20:20.010197 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:20:20.019685 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:20:20.021279 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:20:20.032144 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product__dbt_tmp" rename to "parent_product"
+[0m01:20:20.031586 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:20:20.033032 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map__dbt_tmp" rename to "link_product_map"
+[0m01:20:20.033415 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:20:20.044374 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:20:20.226891 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:20:20.227359 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:20:20.228605 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:20:20.229115 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:20:20.228022 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:20:20.230022 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:20:20.232233 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:20:20.232628 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:20:20.259697 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:20:20.268029 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+drop view if exists "postgres"."public_staging"."link_product_map__dbt_backup" cascade
+[0m01:20:20.267347 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:20:20.268922 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+drop view if exists "postgres"."public_staging"."parent_product__dbt_backup" cascade
+[0m01:20:20.270248 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:20:20.270693 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:20:20.275233 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:20:20.279454 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:20:20.280655 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: Close
+[0m01:20:20.280075 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: Close
+[0m01:20:20.282269 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c288ca1d-cb88-4ea4-bafe-d0af55370c83', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf23dedd0>]}
+[0m01:20:20.283760 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c288ca1d-cb88-4ea4-bafe-d0af55370c83', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf23d66e0>]}
+[0m01:20:20.285128 [info ] [Thread-2 (]: 2 of 3 OK created view model public_staging.parent_product ..................... [[32mCREATE VIEW[0m in 0.80s]
+[0m01:20:20.286677 [info ] [Thread-1 (]: 1 of 3 OK created view model public_staging.link_product_map ................... [[32mCREATE VIEW[0m in 0.80s]
+[0m01:20:20.288166 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_product
+[0m01:20:20.289840 [debug] [Thread-1 (]: Finished running node model.jaffle_shop.link_product_map
+[0m01:20:20.291004 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_variant_map
+[0m01:20:20.292586 [info ] [Thread-2 (]: 3 of 3 START view model public_staging.parent_variant_map ...................... [RUN]
+[0m01:20:20.294270 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.295025 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_variant_map
+[0m01:20:20.295676 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_variant_map
+[0m01:20:20.304223 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.305948 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:20:20.306521 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_variant_map
+[0m01:20:20.325174 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.327090 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.327657 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: BEGIN
+[0m01:20:20.328144 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:20:20.366021 [debug] [Thread-2 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:20:20.367032 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.367609 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+
+  create view "postgres"."public_staging"."parent_variant_map__dbt_tmp" as (
+    with base as (
+    Select
+        md5(pid || variant) as parent_variant_map_uuid,
+        pid as parent_product_id,
+        variant as variant_id,
+        actual_size,
+        weave_feature,
+        weave_cat,
+        size_grp,
+        shipping_size,
+        shape,
+        cast(weight as float) as weight,
+        cast(price as decimal(10,2)) as price,
+        cast(msrp as decimal(10,2)) as msrp,    
+        case when status = 'In_stock' and not low_stock then False else True end as popular_variant_flag,
+        low_stock as low_stock_flag,
+        cast(estimated_delivery_date as date) as estimated_delivery_date,
+        case when new_arrival = 'Y' then true else false end as new_arrival_flag,   
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        row_number() over (partition by pid, variant order by dw_insert_timestamp desc) as row_num
+    from rugs_usa_variant
+)
+
+
+Select *
+from base 
+where row_num = 1
+  );
+[0m01:20:20.370893 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:20:20.382470 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.383088 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map" rename to "parent_variant_map__dbt_backup"
+[0m01:20:20.384143 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:20:20.394615 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.395203 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map__dbt_tmp" rename to "parent_variant_map"
+[0m01:20:20.396177 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:20:20.403067 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:20:20.403635 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.404114 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:20:20.405483 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:20:20.413233 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:20:20.413813 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+drop view if exists "postgres"."public_staging"."parent_variant_map__dbt_backup" cascade
+[0m01:20:20.415531 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:20:20.419733 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:20:20.420340 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: Close
+[0m01:20:20.421764 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'c288ca1d-cb88-4ea4-bafe-d0af55370c83', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10aec50>]}
+[0m01:20:20.422981 [info ] [Thread-2 (]: 3 of 3 OK created view model public_staging.parent_variant_map ................. [[32mCREATE VIEW[0m in 0.13s]
+[0m01:20:20.424369 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_variant_map
+[0m01:20:20.430159 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:20:20.431100 [debug] [MainThread]: Using postgres connection "master"
+[0m01:20:20.431664 [debug] [MainThread]: On master: BEGIN
+[0m01:20:20.432201 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m01:20:20.469874 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:20:20.470900 [debug] [MainThread]: On master: COMMIT
+[0m01:20:20.471462 [debug] [MainThread]: Using postgres connection "master"
+[0m01:20:20.471968 [debug] [MainThread]: On master: COMMIT
+[0m01:20:20.472616 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:20:20.473166 [debug] [MainThread]: On master: Close
+[0m01:20:20.474969 [info ] [MainThread]: 
+[0m01:20:20.475842 [info ] [MainThread]: Finished running 3 view models in 0 hours 0 minutes and 1.38 seconds (1.38s).
+[0m01:20:20.477014 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:20:20.477613 [debug] [MainThread]: Connection 'model.jaffle_shop.parent_variant_map' was properly closed.
+[0m01:20:20.478085 [debug] [MainThread]: Connection 'model.jaffle_shop.link_product_map' was properly closed.
+[0m01:20:20.515158 [info ] [MainThread]: 
+[0m01:20:20.516188 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:20:20.517393 [info ] [MainThread]: 
+[0m01:20:20.518538 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[0m01:20:20.520918 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10f4310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10f42e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf2339c30>]}
+
+
+============================== 2024-07-22 01:23:50.025082 | 3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2 ==============================
+[0m01:23:50.025687 [info ] [MainThread]: Running with dbt=1.2.0
+[0m01:23:50.029782 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/usr/src/dbt/profiles', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m01:23:50.030706 [debug] [MainThread]: Tracking: tracking
+[0m01:23:50.060910 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f22cb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f21930>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f23520>]}
+[0m01:23:50.275086 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m01:23:50.277479 [debug] [MainThread]: Partial parsing: updated file: jaffle_shop://models/staging/parent_product.sql
+[0m01:23:50.358877 [debug] [MainThread]: 1699: static parser successfully parsed staging/parent_product.sql
+[0m01:23:50.577173 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10a9570>]}
+[0m01:23:50.621293 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1083fd0>]}
+[0m01:23:50.622545 [info ] [MainThread]: Found 5 models, 5 tests, 0 snapshots, 0 analyses, 256 macros, 0 operations, 6 seed files, 0 sources, 0 exposures, 0 metrics
+[0m01:23:50.623457 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10753c0>]}
+[0m01:23:50.635684 [info ] [MainThread]: 
+[0m01:23:50.638230 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:23:50.643864 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres"
+[0m01:23:50.705296 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m01:23:50.706406 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m01:23:50.706985 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:23:50.784747 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.08 seconds
+[0m01:23:50.792364 [debug] [ThreadPool]: On list_postgres: Close
+[0m01:23:50.800023 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public_staging"
+[0m01:23:50.801778 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public"
+[0m01:23:50.833220 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:23:50.840582 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:23:50.841337 [debug] [ThreadPool]: On list_postgres_public_staging: BEGIN
+[0m01:23:50.841925 [debug] [ThreadPool]: On list_postgres_public: BEGIN
+[0m01:23:50.842491 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:23:50.843063 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:23:50.881985 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:23:50.883024 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:23:50.883465 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:23:50.884076 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:23:50.884697 [debug] [ThreadPool]: On list_postgres_public_staging: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public_staging"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_staging'
+  
+[0m01:23:50.885368 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m01:23:50.889810 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.0 seconds
+[0m01:23:50.890363 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:23:50.896901 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m01:23:50.902398 [debug] [ThreadPool]: On list_postgres_public_staging: ROLLBACK
+[0m01:23:50.903398 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m01:23:50.903991 [debug] [ThreadPool]: On list_postgres_public_staging: Close
+[0m01:23:50.928724 [debug] [MainThread]: Using postgres connection "master"
+[0m01:23:50.929608 [debug] [MainThread]: On master: BEGIN
+[0m01:23:50.930121 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:23:50.966780 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:23:50.967636 [debug] [MainThread]: Using postgres connection "master"
+[0m01:23:50.968147 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m01:23:50.972601 [debug] [MainThread]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:23:50.978394 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f68370>]}
+[0m01:23:50.979569 [debug] [MainThread]: On master: ROLLBACK
+[0m01:23:50.980221 [debug] [MainThread]: Using postgres connection "master"
+[0m01:23:50.980724 [debug] [MainThread]: On master: BEGIN
+[0m01:23:50.981577 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m01:23:50.982129 [debug] [MainThread]: On master: COMMIT
+[0m01:23:50.982627 [debug] [MainThread]: Using postgres connection "master"
+[0m01:23:50.983089 [debug] [MainThread]: On master: COMMIT
+[0m01:23:50.983716 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:23:50.984288 [debug] [MainThread]: On master: Close
+[0m01:23:50.985532 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m01:23:50.986489 [info ] [MainThread]: 
+[0m01:23:50.999656 [debug] [Thread-1 (]: Began running node model.jaffle_shop.link_product_map
+[0m01:23:51.000358 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_product
+[0m01:23:51.001457 [info ] [Thread-1 (]: 1 of 3 START view model public_staging.link_product_map ........................ [RUN]
+[0m01:23:51.002585 [info ] [Thread-2 (]: 2 of 3 START view model public_staging.parent_product .......................... [RUN]
+[0m01:23:51.004337 [debug] [Thread-1 (]: Acquiring new postgres connection "model.jaffle_shop.link_product_map"
+[0m01:23:51.006100 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_product"
+[0m01:23:51.006965 [debug] [Thread-1 (]: Began compiling node model.jaffle_shop.link_product_map
+[0m01:23:51.007656 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_product
+[0m01:23:51.008314 [debug] [Thread-1 (]: Compiling model.jaffle_shop.link_product_map
+[0m01:23:51.008920 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_product
+[0m01:23:51.018498 [debug] [Thread-1 (]: Writing injected SQL for node "model.jaffle_shop.link_product_map"
+[0m01:23:51.029752 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_product"
+[0m01:23:51.032944 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:23:51.033576 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:23:51.034664 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_product
+[0m01:23:51.034036 [debug] [Thread-1 (]: Began executing node model.jaffle_shop.link_product_map
+[0m01:23:51.437195 [debug] [Thread-1 (]: Writing runtime SQL for node "model.jaffle_shop.link_product_map"
+[0m01:23:51.438276 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_product"
+[0m01:23:51.441671 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:23:51.442179 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:23:51.443216 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: BEGIN
+[0m01:23:51.443733 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:23:51.442703 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: BEGIN
+[0m01:23:51.446523 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:23:51.483229 [debug] [Thread-2 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:23:51.484179 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:23:51.484787 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+
+  create view "postgres"."public_staging"."parent_product__dbt_tmp" as (
+    --making a simple dimension table for parent product
+
+Select distinct
+pid as parent_product_id,
+thickness,
+material,
+weave_feature,
+brand,
+category
+from rugs_usa_parent
+  );
+[0m01:23:51.486899 [debug] [Thread-1 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:23:51.487426 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:23:51.488015 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:23:51.518047 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+
+  create view "postgres"."public_staging"."link_product_map__dbt_tmp" as (
+    with base as (
+    Select *, row_number() over (partition by card_links order by page_rank) as row_num
+    from (
+        Select
+        md5(card_links) as link_product_map_uuid,
+        split_part(split_part(card_links, '/', -1), '-', 1) as parent_product_id, --the last element of the card_links is the pid
+        split_part(card_links, '/', -2) as color, --the penultimate element of the card_links is the color
+        case when split_part(split_part(page_links, '/', -1), '?', 2) = '' then 1
+            else cast(
+                    split_part(
+                        split_part(split_part(page_links, '/', -1), '?', 2),
+                        '=',
+                        2
+                    ) as int) end as page_rank,    --the second element of the query string is the page rank
+        request_time_stamp::timestamptz as request_timestamp_utc, --assuming timestamp is in utc at the source
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        card_links, 
+        page_links
+        from rugs_usa_links) links
+)
+
+Select *
+from base
+where row_num = 1
+  );
+[0m01:23:51.519450 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:23:51.520464 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product" rename to "parent_product__dbt_backup"
+[0m01:23:51.521627 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:23:51.533253 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:23:51.534337 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product__dbt_tmp" rename to "parent_product"
+[0m01:23:51.533723 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.01 seconds
+[0m01:23:51.542296 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:23:51.545970 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:23:51.576356 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map" rename to "link_product_map__dbt_backup"
+[0m01:23:51.597466 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:23:51.635575 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:23:51.647461 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map__dbt_tmp" rename to "link_product_map"
+[0m01:23:51.669382 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:23:51.670871 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:23:51.678747 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:23:51.679337 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:23:51.678033 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:23:51.680280 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:23:51.680875 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:23:51.681337 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:23:51.682155 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:23:51.709270 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:23:51.717520 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+drop view if exists "postgres"."public_staging"."parent_product__dbt_backup" cascade
+[0m01:23:51.716870 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:23:51.718335 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+drop view if exists "postgres"."public_staging"."link_product_map__dbt_backup" cascade
+[0m01:23:51.719549 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:23:51.720196 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:23:51.724627 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:23:51.729540 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: Close
+[0m01:23:51.728883 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:23:51.731841 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: Close
+[0m01:23:51.731174 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aab1cd3bfd0>]}
+[0m01:23:51.733174 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aab1cd3b2e0>]}
+[0m01:23:51.736430 [info ] [Thread-1 (]: 1 of 3 OK created view model public_staging.link_product_map ................... [[32mCREATE VIEW[0m in 0.73s]
+[0m01:23:51.734545 [info ] [Thread-2 (]: 2 of 3 OK created view model public_staging.parent_product ..................... [[32mCREATE VIEW[0m in 0.73s]
+[0m01:23:51.737946 [debug] [Thread-1 (]: Finished running node model.jaffle_shop.link_product_map
+[0m01:23:51.739968 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_product
+[0m01:23:51.741172 [debug] [Thread-1 (]: Began running node model.jaffle_shop.parent_variant_map
+[0m01:23:51.742753 [info ] [Thread-1 (]: 3 of 3 START view model public_staging.parent_variant_map ...................... [RUN]
+[0m01:23:51.744491 [debug] [Thread-1 (]: Acquiring new postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.745276 [debug] [Thread-1 (]: Began compiling node model.jaffle_shop.parent_variant_map
+[0m01:23:51.746149 [debug] [Thread-1 (]: Compiling model.jaffle_shop.parent_variant_map
+[0m01:23:51.754239 [debug] [Thread-1 (]: Writing injected SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.755863 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:23:51.756474 [debug] [Thread-1 (]: Began executing node model.jaffle_shop.parent_variant_map
+[0m01:23:51.774645 [debug] [Thread-1 (]: Writing runtime SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.776451 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.776983 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: BEGIN
+[0m01:23:51.777472 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:23:51.815750 [debug] [Thread-1 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:23:51.816693 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.817219 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+
+  create view "postgres"."public_staging"."parent_variant_map__dbt_tmp" as (
+    with base as (
+    Select
+        md5(pid || variant) as parent_variant_map_uuid,
+        pid as parent_product_id,
+        variant as variant_id,
+        actual_size,
+        weave_feature,
+        weave_cat,
+        size_grp,
+        shipping_size,
+        shape,
+        cast(weight as float) as weight,
+        cast(price as decimal(10,2)) as price,
+        cast(msrp as decimal(10,2)) as msrp,    
+        case when status = 'In_stock' and not low_stock then False else True end as popular_variant_flag,
+        low_stock as low_stock_flag,
+        cast(estimated_delivery_date as date) as estimated_delivery_date,
+        case when new_arrival = 'Y' then true else false end as new_arrival_flag,   
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        row_number() over (partition by pid, variant order by dw_insert_timestamp desc) as row_num
+    from rugs_usa_variant
+)
+
+
+Select *
+from base 
+where row_num = 1
+  );
+[0m01:23:51.820487 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:23:51.831916 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.832558 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map" rename to "parent_variant_map__dbt_backup"
+[0m01:23:51.833575 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:23:51.843964 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.844588 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map__dbt_tmp" rename to "parent_variant_map"
+[0m01:23:51.845560 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:23:51.852445 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:23:51.852998 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.853537 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:23:51.854879 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:23:51.862837 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:23:51.863420 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+drop view if exists "postgres"."public_staging"."parent_variant_map__dbt_backup" cascade
+[0m01:23:51.864975 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:23:51.869304 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:23:51.869931 [debug] [Thread-1 (]: On model.jaffle_shop.parent_variant_map: Close
+[0m01:23:51.871375 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '3d7e9bdb-9d41-4d6e-8952-7bf8e92015a2', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10f26e0>]}
+[0m01:23:51.872618 [info ] [Thread-1 (]: 3 of 3 OK created view model public_staging.parent_variant_map ................. [[32mCREATE VIEW[0m in 0.13s]
+[0m01:23:51.874003 [debug] [Thread-1 (]: Finished running node model.jaffle_shop.parent_variant_map
+[0m01:23:51.880498 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:23:51.881495 [debug] [MainThread]: Using postgres connection "master"
+[0m01:23:51.882029 [debug] [MainThread]: On master: BEGIN
+[0m01:23:51.882569 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m01:23:51.919483 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:23:51.920516 [debug] [MainThread]: On master: COMMIT
+[0m01:23:51.921049 [debug] [MainThread]: Using postgres connection "master"
+[0m01:23:51.921549 [debug] [MainThread]: On master: COMMIT
+[0m01:23:51.922251 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:23:51.922844 [debug] [MainThread]: On master: Close
+[0m01:23:51.924632 [info ] [MainThread]: 
+[0m01:23:51.925527 [info ] [MainThread]: Finished running 3 view models in 0 hours 0 minutes and 1.29 seconds (1.29s).
+[0m01:23:51.926616 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:23:51.927216 [debug] [MainThread]: Connection 'model.jaffle_shop.parent_variant_map' was properly closed.
+[0m01:23:51.927848 [debug] [MainThread]: Connection 'model.jaffle_shop.parent_product' was properly closed.
+[0m01:23:51.967618 [info ] [MainThread]: 
+[0m01:23:51.968607 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:23:51.969811 [info ] [MainThread]: 
+[0m01:23:51.970728 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[0m01:23:51.972046 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1083b20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1083550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf2335a20>]}
+
+
+============================== 2024-07-22 01:29:43.706185 | 0d63bfc8-e194-4534-b62a-04d011c22ded ==============================
+[0m01:29:43.706938 [info ] [MainThread]: Running with dbt=1.2.0
+[0m01:29:43.710976 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/usr/src/dbt/profiles', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m01:29:43.711942 [debug] [MainThread]: Tracking: tracking
+[0m01:29:43.737509 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f20bb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f20370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f21840>]}
+[0m01:29:43.968147 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m01:29:43.970559 [debug] [MainThread]: Partial parsing: updated file: jaffle_shop://models/staging/parent_variant_map.sql
+[0m01:29:44.055869 [debug] [MainThread]: 1699: static parser successfully parsed staging/parent_variant_map.sql
+[0m01:29:44.290071 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '0d63bfc8-e194-4534-b62a-04d011c22ded', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10a95a0>]}
+[0m01:29:44.334475 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '0d63bfc8-e194-4534-b62a-04d011c22ded', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087fa0>]}
+[0m01:29:44.335724 [info ] [MainThread]: Found 5 models, 5 tests, 0 snapshots, 0 analyses, 256 macros, 0 operations, 6 seed files, 0 sources, 0 exposures, 0 metrics
+[0m01:29:44.337014 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0d63bfc8-e194-4534-b62a-04d011c22ded', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f035b0>]}
+[0m01:29:44.344511 [info ] [MainThread]: 
+[0m01:29:44.346430 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:29:44.351590 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres"
+[0m01:29:44.420665 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m01:29:44.422049 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m01:29:44.423724 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:29:44.515160 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.09 seconds
+[0m01:29:44.523270 [debug] [ThreadPool]: On list_postgres: Close
+[0m01:29:44.532268 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public_staging"
+[0m01:29:44.533983 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public"
+[0m01:29:44.572538 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:29:44.589350 [debug] [ThreadPool]: On list_postgres_public_staging: BEGIN
+[0m01:29:44.589943 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:29:44.590599 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:29:44.591284 [debug] [ThreadPool]: On list_postgres_public: BEGIN
+[0m01:29:44.593349 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:29:44.632359 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:29:44.633430 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:29:44.633898 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:29:44.634487 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:29:44.635060 [debug] [ThreadPool]: On list_postgres_public_staging: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public_staging"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_staging'
+  
+[0m01:29:44.635665 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m01:29:44.640501 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.0 seconds
+[0m01:29:44.641015 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:29:44.646915 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m01:29:44.652062 [debug] [ThreadPool]: On list_postgres_public_staging: ROLLBACK
+[0m01:29:44.653091 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m01:29:44.653728 [debug] [ThreadPool]: On list_postgres_public_staging: Close
+[0m01:29:44.678321 [debug] [MainThread]: Using postgres connection "master"
+[0m01:29:44.679173 [debug] [MainThread]: On master: BEGIN
+[0m01:29:44.679698 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:29:44.719946 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:29:44.720875 [debug] [MainThread]: Using postgres connection "master"
+[0m01:29:44.721373 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m01:29:44.728182 [debug] [MainThread]: SQL status: SELECT 3 in 0.01 seconds
+[0m01:29:44.734144 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '0d63bfc8-e194-4534-b62a-04d011c22ded', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f21840>]}
+[0m01:29:44.735378 [debug] [MainThread]: On master: ROLLBACK
+[0m01:29:44.736016 [debug] [MainThread]: Using postgres connection "master"
+[0m01:29:44.736539 [debug] [MainThread]: On master: BEGIN
+[0m01:29:44.737376 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m01:29:44.737939 [debug] [MainThread]: On master: COMMIT
+[0m01:29:44.738460 [debug] [MainThread]: Using postgres connection "master"
+[0m01:29:44.738994 [debug] [MainThread]: On master: COMMIT
+[0m01:29:44.739640 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:29:44.740181 [debug] [MainThread]: On master: Close
+[0m01:29:44.741509 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m01:29:44.742488 [info ] [MainThread]: 
+[0m01:29:44.754567 [debug] [Thread-1 (]: Began running node model.jaffle_shop.link_product_map
+[0m01:29:44.755143 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_product
+[0m01:29:44.756206 [info ] [Thread-1 (]: 1 of 3 START view model public_staging.link_product_map ........................ [RUN]
+[0m01:29:44.757193 [info ] [Thread-2 (]: 2 of 3 START view model public_staging.parent_product .......................... [RUN]
+[0m01:29:44.758893 [debug] [Thread-1 (]: Acquiring new postgres connection "model.jaffle_shop.link_product_map"
+[0m01:29:44.760675 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_product"
+[0m01:29:44.761490 [debug] [Thread-1 (]: Began compiling node model.jaffle_shop.link_product_map
+[0m01:29:44.762126 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_product
+[0m01:29:44.762807 [debug] [Thread-1 (]: Compiling model.jaffle_shop.link_product_map
+[0m01:29:44.763349 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_product
+[0m01:29:44.771609 [debug] [Thread-1 (]: Writing injected SQL for node "model.jaffle_shop.link_product_map"
+[0m01:29:44.781344 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_product"
+[0m01:29:44.784095 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:29:44.785131 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_product
+[0m01:29:44.784742 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:29:44.813583 [debug] [Thread-1 (]: Began executing node model.jaffle_shop.link_product_map
+[0m01:29:45.202671 [debug] [Thread-1 (]: Writing runtime SQL for node "model.jaffle_shop.link_product_map"
+[0m01:29:45.203979 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_product"
+[0m01:29:45.206459 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:29:45.206965 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:29:45.207610 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: BEGIN
+[0m01:29:45.209725 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:29:45.208813 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: BEGIN
+[0m01:29:45.211962 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:29:45.445476 [debug] [Thread-2 (]: SQL status: BEGIN in 0.23 seconds
+[0m01:29:45.447007 [debug] [Thread-1 (]: SQL status: BEGIN in 0.24 seconds
+[0m01:29:45.449355 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:29:45.450304 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+
+  create view "postgres"."public_staging"."link_product_map__dbt_tmp" as (
+    with base as (
+    Select *, row_number() over (partition by card_links order by page_rank) as row_num
+    from (
+        Select
+        md5(card_links) as link_product_map_uuid,
+        split_part(split_part(card_links, '/', -1), '-', 1) as parent_product_id, --the last element of the card_links is the pid
+        split_part(card_links, '/', -2) as color, --the penultimate element of the card_links is the color
+        case when split_part(split_part(page_links, '/', -1), '?', 2) = '' then 1
+            else cast(
+                    split_part(
+                        split_part(split_part(page_links, '/', -1), '?', 2),
+                        '=',
+                        2
+                    ) as int) end as page_rank,    --the second element of the query string is the page rank
+        request_time_stamp::timestamptz as request_timestamp_utc, --assuming timestamp is in utc at the source
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        card_links, 
+        page_links
+        from rugs_usa_links) links
+)
+
+Select *
+from base
+where row_num = 1
+  );
+[0m01:29:45.448312 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:29:45.452423 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+
+  create view "postgres"."public_staging"."parent_product__dbt_tmp" as (
+    --making a simple dimension table for parent product
+
+Select distinct
+pid as parent_product_id,
+thickness,
+material,
+weave_feature,
+brand,
+category
+from rugs_usa_parent
+  );
+[0m01:29:45.468762 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.01 seconds
+[0m01:29:45.470477 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.02 seconds
+[0m01:29:45.549464 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:29:45.550761 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:29:45.552077 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map" rename to "link_product_map__dbt_backup"
+[0m01:29:45.551500 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product" rename to "parent_product__dbt_backup"
+[0m01:29:45.554388 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:29:45.554785 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:29:45.565432 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:29:45.576392 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map__dbt_tmp" rename to "link_product_map"
+[0m01:29:45.575812 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:29:45.577271 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product__dbt_tmp" rename to "parent_product"
+[0m01:29:45.577651 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:29:45.586268 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:29:45.761796 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:29:45.768582 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:29:45.769112 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:29:45.767845 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:29:45.770024 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:29:45.770532 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:29:45.774162 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:29:45.781614 [debug] [Thread-1 (]: SQL status: COMMIT in 0.01 seconds
+[0m01:29:45.798978 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:29:45.807269 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+drop view if exists "postgres"."public_staging"."parent_product__dbt_backup" cascade
+[0m01:29:45.806605 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:29:45.808107 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+drop view if exists "postgres"."public_staging"."link_product_map__dbt_backup" cascade
+[0m01:29:45.809441 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:29:45.814291 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:29:45.815312 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: Close
+[0m01:29:45.814698 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.01 seconds
+[0m01:29:45.817475 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0d63bfc8-e194-4534-b62a-04d011c22ded', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf233e770>]}
+[0m01:29:45.821640 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:29:45.824106 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: Close
+[0m01:29:45.823070 [info ] [Thread-2 (]: 2 of 3 OK created view model public_staging.parent_product ..................... [[32mCREATE VIEW[0m in 1.06s]
+[0m01:29:45.825571 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0d63bfc8-e194-4534-b62a-04d011c22ded', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab109af50>]}
+[0m01:29:45.827392 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_product
+[0m01:29:45.828841 [info ] [Thread-1 (]: 1 of 3 OK created view model public_staging.link_product_map ................... [[32mCREATE VIEW[0m in 1.07s]
+[0m01:29:45.830114 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_variant_map
+[0m01:29:45.833737 [info ] [Thread-2 (]: 3 of 3 START view model public_staging.parent_variant_map ...................... [RUN]
+[0m01:29:45.832818 [debug] [Thread-1 (]: Finished running node model.jaffle_shop.link_product_map
+[0m01:29:45.835377 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.836541 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_variant_map
+[0m01:29:45.837145 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_variant_map
+[0m01:29:45.844788 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.846282 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:29:45.846834 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_variant_map
+[0m01:29:45.863786 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.865443 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.865960 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: BEGIN
+[0m01:29:45.866404 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:29:45.906886 [debug] [Thread-2 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:29:45.908430 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.909031 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+
+  create view "postgres"."public_staging"."parent_variant_map__dbt_tmp" as (
+    with base as (
+    Select
+        md5(pid || variant) as parent_variant_map_uuid,
+        pid as parent_product_id,
+        variant as variant_id,
+        actual_size,
+        weave_feature,
+        weave_cat,
+        size_grp,
+        shipping_size,
+        shape,
+        cast(weight as float) as weight,
+        cast(price as decimal(10,2)) as price,
+        cast(msrp as decimal(10,2)) as msrp,    
+        case when status = 'In_stock' and not low_stock then False else True end as popular_variant_flag,
+        low_stock as low_stock_flag,
+        cast(estimated_delivery_date as date) as estimated_delivery_date,
+        case when new_arrival = 'Y' then true else false end as new_arrival_flag,   
+        -- dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        row_number() over (partition by pid, variant order by dw_insert_timestamp desc) as row_num
+    from rugs_usa_variant
+)
+
+
+Select *
+from base 
+where row_num = 1
+  );
+[0m01:29:45.913655 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:29:45.928800 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.929650 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map" rename to "parent_variant_map__dbt_backup"
+[0m01:29:45.931096 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:29:45.941730 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.942347 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map__dbt_tmp" rename to "parent_variant_map"
+[0m01:29:45.943302 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:29:45.950171 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:29:45.950741 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.951215 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:29:45.953105 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:29:45.961383 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:29:45.962011 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+drop view if exists "postgres"."public_staging"."parent_variant_map__dbt_backup" cascade
+[0m01:29:45.963689 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:29:45.968076 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:29:45.968696 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: Close
+[0m01:29:45.970293 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '0d63bfc8-e194-4534-b62a-04d011c22ded', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10afdc0>]}
+[0m01:29:45.971590 [info ] [Thread-2 (]: 3 of 3 OK created view model public_staging.parent_variant_map ................. [[32mCREATE VIEW[0m in 0.14s]
+[0m01:29:45.973174 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_variant_map
+[0m01:29:45.979299 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:29:45.980137 [debug] [MainThread]: Using postgres connection "master"
+[0m01:29:45.980659 [debug] [MainThread]: On master: BEGIN
+[0m01:29:45.981130 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m01:29:46.017494 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:29:46.018335 [debug] [MainThread]: On master: COMMIT
+[0m01:29:46.018844 [debug] [MainThread]: Using postgres connection "master"
+[0m01:29:46.019337 [debug] [MainThread]: On master: COMMIT
+[0m01:29:46.020007 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:29:46.020565 [debug] [MainThread]: On master: Close
+[0m01:29:46.022414 [info ] [MainThread]: 
+[0m01:29:46.023315 [info ] [MainThread]: Finished running 3 view models in 0 hours 0 minutes and 1.68 seconds (1.68s).
+[0m01:29:46.024257 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:29:46.024864 [debug] [MainThread]: Connection 'model.jaffle_shop.link_product_map' was properly closed.
+[0m01:29:46.025388 [debug] [MainThread]: Connection 'model.jaffle_shop.parent_variant_map' was properly closed.
+[0m01:29:46.061965 [info ] [MainThread]: 
+[0m01:29:46.062910 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:29:46.064015 [info ] [MainThread]: 
+[0m01:29:46.064907 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[0m01:29:46.066345 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087b80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf2345a50>]}
+
+
+============================== 2024-07-22 01:32:37.469847 | 1eff89b4-ae7d-4582-a751-ab120c7dcdfa ==============================
+[0m01:32:37.470553 [info ] [MainThread]: Running with dbt=1.2.0
+[0m01:32:37.475554 [debug] [MainThread]: running dbt with arguments {'write_json': True, 'use_colors': True, 'printer_width': 80, 'version_check': True, 'partial_parse': True, 'static_parser': True, 'profiles_dir': '/usr/src/dbt/profiles', 'send_anonymous_usage_stats': True, 'event_buffer_size': 100000, 'quiet': False, 'no_print': False, 'which': 'run', 'rpc_method': 'run', 'indirect_selection': 'eager'}
+[0m01:32:37.476375 [debug] [MainThread]: Tracking: tracking
+[0m01:32:37.510180 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f20b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f20310>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f21c60>]}
+[0m01:32:37.715105 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m01:32:37.717278 [debug] [MainThread]: Partial parsing: updated file: jaffle_shop://models/staging/parent_variant_map.sql
+[0m01:32:37.805223 [debug] [MainThread]: 1699: static parser successfully parsed staging/parent_variant_map.sql
+[0m01:32:38.019129 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1eff89b4-ae7d-4582-a751-ab120c7dcdfa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10aa800>]}
+[0m01:32:38.065614 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1eff89b4-ae7d-4582-a751-ab120c7dcdfa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1087e50>]}
+[0m01:32:38.066975 [info ] [MainThread]: Found 5 models, 5 tests, 0 snapshots, 0 analyses, 256 macros, 0 operations, 6 seed files, 0 sources, 0 exposures, 0 metrics
+[0m01:32:38.068173 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1eff89b4-ae7d-4582-a751-ab120c7dcdfa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab1075210>]}
+[0m01:32:38.075941 [info ] [MainThread]: 
+[0m01:32:38.078044 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:32:38.083214 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres"
+[0m01:32:38.142274 [debug] [ThreadPool]: Using postgres connection "list_postgres"
+[0m01:32:38.143187 [debug] [ThreadPool]: On list_postgres: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m01:32:38.143689 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:32:38.213675 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.07 seconds
+[0m01:32:38.220294 [debug] [ThreadPool]: On list_postgres: Close
+[0m01:32:38.227942 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public_staging"
+[0m01:32:38.229664 [debug] [ThreadPool]: Acquiring new postgres connection "list_postgres_public"
+[0m01:32:38.267131 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:32:38.281566 [debug] [ThreadPool]: On list_postgres_public_staging: BEGIN
+[0m01:32:38.281186 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:32:38.282123 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m01:32:38.282758 [debug] [ThreadPool]: On list_postgres_public: BEGIN
+[0m01:32:38.284663 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m01:32:38.322587 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:32:38.323205 [debug] [ThreadPool]: SQL status: BEGIN in 0.04 seconds
+[0m01:32:38.323915 [debug] [ThreadPool]: Using postgres connection "list_postgres_public"
+[0m01:32:38.324534 [debug] [ThreadPool]: Using postgres connection "list_postgres_public_staging"
+[0m01:32:38.325125 [debug] [ThreadPool]: On list_postgres_public: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public'
+  
+[0m01:32:38.325735 [debug] [ThreadPool]: On list_postgres_public_staging: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "list_postgres_public_staging"} */
+select
+      'postgres' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'postgres' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_staging'
+  
+[0m01:32:38.329394 [debug] [ThreadPool]: SQL status: SELECT 6 in 0.0 seconds
+[0m01:32:38.329861 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:32:38.335725 [debug] [ThreadPool]: On list_postgres_public: ROLLBACK
+[0m01:32:38.340807 [debug] [ThreadPool]: On list_postgres_public_staging: ROLLBACK
+[0m01:32:38.341760 [debug] [ThreadPool]: On list_postgres_public: Close
+[0m01:32:38.342328 [debug] [ThreadPool]: On list_postgres_public_staging: Close
+[0m01:32:38.367484 [debug] [MainThread]: Using postgres connection "master"
+[0m01:32:38.368308 [debug] [MainThread]: On master: BEGIN
+[0m01:32:38.368823 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m01:32:38.405745 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:32:38.406652 [debug] [MainThread]: Using postgres connection "master"
+[0m01:32:38.407175 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m01:32:38.411329 [debug] [MainThread]: SQL status: SELECT 3 in 0.0 seconds
+[0m01:32:38.416970 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1eff89b4-ae7d-4582-a751-ab120c7dcdfa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab0f20b80>]}
+[0m01:32:38.417966 [debug] [MainThread]: On master: ROLLBACK
+[0m01:32:38.418635 [debug] [MainThread]: Using postgres connection "master"
+[0m01:32:38.419185 [debug] [MainThread]: On master: BEGIN
+[0m01:32:38.420038 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m01:32:38.420606 [debug] [MainThread]: On master: COMMIT
+[0m01:32:38.421098 [debug] [MainThread]: Using postgres connection "master"
+[0m01:32:38.421555 [debug] [MainThread]: On master: COMMIT
+[0m01:32:38.422175 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:32:38.422729 [debug] [MainThread]: On master: Close
+[0m01:32:38.423878 [info ] [MainThread]: Concurrency: 2 threads (target='dev')
+[0m01:32:38.424748 [info ] [MainThread]: 
+[0m01:32:38.436439 [debug] [Thread-1 (]: Began running node model.jaffle_shop.link_product_map
+[0m01:32:38.437071 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_product
+[0m01:32:38.438144 [info ] [Thread-1 (]: 1 of 3 START view model public_staging.link_product_map ........................ [RUN]
+[0m01:32:38.439518 [info ] [Thread-2 (]: 2 of 3 START view model public_staging.parent_product .......................... [RUN]
+[0m01:32:38.441873 [debug] [Thread-1 (]: Acquiring new postgres connection "model.jaffle_shop.link_product_map"
+[0m01:32:38.443519 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_product"
+[0m01:32:38.444236 [debug] [Thread-1 (]: Began compiling node model.jaffle_shop.link_product_map
+[0m01:32:38.444893 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_product
+[0m01:32:38.445493 [debug] [Thread-1 (]: Compiling model.jaffle_shop.link_product_map
+[0m01:32:38.446094 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_product
+[0m01:32:38.453904 [debug] [Thread-1 (]: Writing injected SQL for node "model.jaffle_shop.link_product_map"
+[0m01:32:38.464906 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_product"
+[0m01:32:38.467986 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:32:38.468830 [debug] [Thread-1 (]: Began executing node model.jaffle_shop.link_product_map
+[0m01:32:38.469204 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:32:38.490300 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_product
+[0m01:32:38.849585 [debug] [Thread-1 (]: Writing runtime SQL for node "model.jaffle_shop.link_product_map"
+[0m01:32:38.854101 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_product"
+[0m01:32:38.857427 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:32:38.857896 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:32:38.858859 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: BEGIN
+[0m01:32:38.859320 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:32:38.858378 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: BEGIN
+[0m01:32:38.861801 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m01:32:38.900165 [debug] [Thread-2 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:32:38.901214 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:32:38.902027 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+
+  create view "postgres"."public_staging"."parent_product__dbt_tmp" as (
+    --making a simple dimension table for parent product
+
+Select distinct
+pid as parent_product_id,
+thickness,
+material,
+weave_feature,
+brand,
+category
+from rugs_usa_parent
+  );
+[0m01:32:38.902494 [debug] [Thread-1 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:32:38.903428 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:32:38.904110 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+
+  create view "postgres"."public_staging"."link_product_map__dbt_tmp" as (
+    with base as (
+    Select *, row_number() over (partition by card_links order by page_rank) as row_num
+    from (
+        Select
+        md5(card_links) as link_product_map_uuid,
+        split_part(split_part(card_links, '/', -1), '-', 1) as parent_product_id, --the last element of the card_links is the pid
+        split_part(card_links, '/', -2) as color, --the penultimate element of the card_links is the color
+        case when split_part(split_part(page_links, '/', -1), '?', 2) = '' then 1
+            else cast(
+                    split_part(
+                        split_part(split_part(page_links, '/', -1), '?', 2),
+                        '=',
+                        2
+                    ) as int) end as page_rank,    --the second element of the query string is the page rank
+        request_time_stamp::timestamptz as request_timestamp_utc, --assuming timestamp is in utc at the source
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        card_links, 
+        page_links
+        from rugs_usa_links) links
+)
+
+Select *
+from base
+where row_num = 1
+  );
+[0m01:32:38.906161 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:32:38.916682 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.01 seconds
+[0m01:32:38.937638 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:32:38.948959 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product" rename to "parent_product__dbt_backup"
+[0m01:32:38.948342 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:32:38.949854 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map" rename to "link_product_map__dbt_backup"
+[0m01:32:38.950319 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:32:38.958610 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:32:38.961476 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:32:38.972174 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+alter table "postgres"."public_staging"."parent_product__dbt_tmp" rename to "parent_product"
+[0m01:32:38.971619 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:32:38.973000 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+alter table "postgres"."public_staging"."link_product_map__dbt_tmp" rename to "link_product_map"
+[0m01:32:38.973398 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:32:38.983221 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.01 seconds
+[0m01:32:39.162089 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:32:39.162546 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:32:39.163340 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:32:39.164459 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: COMMIT
+[0m01:32:39.163906 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:32:39.165487 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: COMMIT
+[0m01:32:39.165991 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:32:39.176178 [debug] [Thread-1 (]: SQL status: COMMIT in 0.01 seconds
+[0m01:32:39.201936 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_product"
+[0m01:32:39.206424 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_product"} */
+drop view if exists "postgres"."public_staging"."parent_product__dbt_backup" cascade
+[0m01:32:39.205780 [debug] [Thread-1 (]: Using postgres connection "model.jaffle_shop.link_product_map"
+[0m01:32:39.207365 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.link_product_map"} */
+drop view if exists "postgres"."public_staging"."link_product_map__dbt_backup" cascade
+[0m01:32:39.209261 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:32:39.209755 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:32:39.214388 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:32:39.219173 [debug] [Thread-2 (]: On model.jaffle_shop.parent_product: Close
+[0m01:32:39.218544 [debug] [Thread-1 (]: finished collecting timing info
+[0m01:32:39.221628 [debug] [Thread-1 (]: On model.jaffle_shop.link_product_map: Close
+[0m01:32:39.220964 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1eff89b4-ae7d-4582-a751-ab120c7dcdfa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf23db070>]}
+[0m01:32:39.222968 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1eff89b4-ae7d-4582-a751-ab120c7dcdfa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf237bfd0>]}
+[0m01:32:39.224397 [info ] [Thread-2 (]: 2 of 3 OK created view model public_staging.parent_product ..................... [[32mCREATE VIEW[0m in 0.78s]
+[0m01:32:39.225805 [info ] [Thread-1 (]: 1 of 3 OK created view model public_staging.link_product_map ................... [[32mCREATE VIEW[0m in 0.78s]
+[0m01:32:39.227508 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_product
+[0m01:32:39.229239 [debug] [Thread-1 (]: Finished running node model.jaffle_shop.link_product_map
+[0m01:32:39.230471 [debug] [Thread-2 (]: Began running node model.jaffle_shop.parent_variant_map
+[0m01:32:39.231948 [info ] [Thread-2 (]: 3 of 3 START view model public_staging.parent_variant_map ...................... [RUN]
+[0m01:32:39.233618 [debug] [Thread-2 (]: Acquiring new postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.234269 [debug] [Thread-2 (]: Began compiling node model.jaffle_shop.parent_variant_map
+[0m01:32:39.234886 [debug] [Thread-2 (]: Compiling model.jaffle_shop.parent_variant_map
+[0m01:32:39.243196 [debug] [Thread-2 (]: Writing injected SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.245261 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:32:39.245819 [debug] [Thread-2 (]: Began executing node model.jaffle_shop.parent_variant_map
+[0m01:32:39.263473 [debug] [Thread-2 (]: Writing runtime SQL for node "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.265275 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.265824 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: BEGIN
+[0m01:32:39.266332 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m01:32:39.304110 [debug] [Thread-2 (]: SQL status: BEGIN in 0.04 seconds
+[0m01:32:39.305031 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.305566 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+
+  create view "postgres"."public_staging"."parent_variant_map__dbt_tmp" as (
+    with base as (
+    Select
+        md5(pid || variant) as parent_variant_map_uuid,
+        pid as parent_product_id,
+        variant as variant_id,
+        actual_size,
+        weave_feature,
+        weave_cat,
+        size_grp,
+        shipping_size,
+        shape,
+        cast(weight as float) as weight,
+        cast(price as decimal(10,2)) as price,
+        cast(msrp as decimal(10,2)) as msrp,    
+        case when status = 'In_stock' and not low_stock then False else True end as popular_variant_flag,
+        low_stock as low_stock_flag,
+        case when new_arrival = 'Y' then true else false end as new_arrival_flag,   
+        dw_insert_timestamp::timestamptz as dw_insert_timestamp_utc, --assuming timestamp is in utc at the source
+        row_number() over (partition by pid, variant order by dw_insert_timestamp desc) as row_num
+    from rugs_usa_variant
+)
+
+
+Select *
+from base 
+where row_num = 1
+  );
+[0m01:32:39.308910 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m01:32:39.320086 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.320702 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map" rename to "parent_variant_map__dbt_backup"
+[0m01:32:39.321768 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:32:39.331894 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.332491 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+alter table "postgres"."public_staging"."parent_variant_map__dbt_tmp" rename to "parent_variant_map"
+[0m01:32:39.333415 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m01:32:39.340159 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:32:39.340706 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.341202 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: COMMIT
+[0m01:32:39.342145 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m01:32:39.349851 [debug] [Thread-2 (]: Using postgres connection "model.jaffle_shop.parent_variant_map"
+[0m01:32:39.350388 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: /* {"app": "dbt", "dbt_version": "1.2.0", "profile_name": "jaffle_shop", "target_name": "dev", "node_id": "model.jaffle_shop.parent_variant_map"} */
+drop view if exists "postgres"."public_staging"."parent_variant_map__dbt_backup" cascade
+[0m01:32:39.352228 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m01:32:39.356429 [debug] [Thread-2 (]: finished collecting timing info
+[0m01:32:39.357028 [debug] [Thread-2 (]: On model.jaffle_shop.parent_variant_map: Close
+[0m01:32:39.358524 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1eff89b4-ae7d-4582-a751-ab120c7dcdfa', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10f0850>]}
+[0m01:32:39.359773 [info ] [Thread-2 (]: 3 of 3 OK created view model public_staging.parent_variant_map ................. [[32mCREATE VIEW[0m in 0.13s]
+[0m01:32:39.361138 [debug] [Thread-2 (]: Finished running node model.jaffle_shop.parent_variant_map
+[0m01:32:39.366598 [debug] [MainThread]: Acquiring new postgres connection "master"
+[0m01:32:39.367524 [debug] [MainThread]: Using postgres connection "master"
+[0m01:32:39.368038 [debug] [MainThread]: On master: BEGIN
+[0m01:32:39.368546 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m01:32:39.405371 [debug] [MainThread]: SQL status: BEGIN in 0.04 seconds
+[0m01:32:39.406335 [debug] [MainThread]: On master: COMMIT
+[0m01:32:39.406859 [debug] [MainThread]: Using postgres connection "master"
+[0m01:32:39.407394 [debug] [MainThread]: On master: COMMIT
+[0m01:32:39.408144 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m01:32:39.408726 [debug] [MainThread]: On master: Close
+[0m01:32:39.410581 [info ] [MainThread]: 
+[0m01:32:39.411525 [info ] [MainThread]: Finished running 3 view models in 0 hours 0 minutes and 1.33 seconds (1.33s).
+[0m01:32:39.412579 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m01:32:39.413256 [debug] [MainThread]: Connection 'model.jaffle_shop.link_product_map' was properly closed.
+[0m01:32:39.414131 [debug] [MainThread]: Connection 'model.jaffle_shop.parent_variant_map' was properly closed.
+[0m01:32:39.451477 [info ] [MainThread]: 
+[0m01:32:39.452509 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m01:32:39.453748 [info ] [MainThread]: 
+[0m01:32:39.454695 [info ] [MainThread]: Done. PASS=3 WARN=0 ERROR=0 SKIP=0 TOTAL=3
+[0m01:32:39.456512 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10f2620>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaab10f26b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x2aaaf233db40>]}
