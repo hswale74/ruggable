@@ -26,3 +26,6 @@ What are the most popular products and variants?
 
 ## Marketing 
 How does the position of a product in the page rank affect sales?
+
+## Operations
+I ran out of time before I could come up with a compelling ops case. It would be interesting to parse the material column on the product table and correlate that against popularity or low inventory to inform decisions about what raw materials we might need to order for our manufacturing process.
