@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: parent_product
+    description: "A staging dataset to dedupe and standardize the raw rugs_parent_usa dataset"
+    columns:
+      - name: parent_product_uuid
+        description: "A unique identifier for the parent product. A composite hash of product id and color"
+        tests:
+          - unique
+
+  - name: parent_variant_map
+    description: "A staging dataset to dedupe and standardize the raw rugs_variant_usa dataset"
+    columns:
+      - name: parent_variant_map_uuid
+        description: "A unique identifier for a parent to variant map. A composite hash of parent product id and variant id"
+        tests:
+          - unique
+
+  - name: link_product_map
+    description: "A staging dataset to dedupe and standardize the raw links dataset"
+    columns:
+      - name: link_product_map_uuid
+        description: "A unique identifier for the link. A composite hash of parent product id and variant id"
+        tests:
+          - unique

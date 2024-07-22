@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: rugs_usa_variant
+    columns:
+      - name: new_arrival
+        description: "A boolean field to indicate if the product is a new arrival"
+        tests:
+          - not_null
+          - accepted_values: {values: ['Y', 'N']} #This check is needed bc of the case statement I use to convert to bool when staging
